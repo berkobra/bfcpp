@@ -1,2 +1,11 @@
+# Input files of the executable
 *.bf
+
+# Temporary files of vim
 *.swp
+
+# The executable itself
+bf
+
+# Pretty self-explanatory
+Makefile
