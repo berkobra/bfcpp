@@ -1,4 +1,4 @@
-#include "cell.h"
+#include "cell.hpp"
 
 cell::cell(int initVal){
     val = initVal;

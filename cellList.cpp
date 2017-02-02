@@ -1,4 +1,4 @@
-#include "cellList.h"
+#include "cellList.hpp"
 
 cellList::cellList(){
     cell* initCell = new cell();

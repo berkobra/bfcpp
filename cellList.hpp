@@ -1,16 +1,17 @@
 #ifndef _CELLLISTH_
 #define _CELLLISTH_
 
-#include "cell.h"
+#include "cell.hpp"
 
-class cellList(){
+class cellList{
     struct node{
         node* prev;
         node* next;
         cell valCell;
     }
 
-    node* current;
+    public:
+        node* current;
 }
 
 cellList::cellList();

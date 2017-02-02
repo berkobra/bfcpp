@@ -2,9 +2,9 @@
 #define _CELLH_
 
 
-class cell(int val){
+class cell{
     int val;
-}
+};
 
 cell::cell(int val = 0);
 cell& cell::operator++();
