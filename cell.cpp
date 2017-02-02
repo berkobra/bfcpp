@@ -1,5 +1,9 @@
 #include "cell.h"
 
+cell::cell(int initVal){
+    val = initVal;
+}
+
 cell& cell::operator++(){
     val++;
     return *this;

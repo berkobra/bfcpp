@@ -6,6 +6,7 @@ class cell(int val){
     int val;
 }
 
+cell::cell(int val = 0);
 cell& cell::operator++();
 cell& cell::operator--();
 void cell::setVal(int newVal);
