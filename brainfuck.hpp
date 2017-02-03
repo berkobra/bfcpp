@@ -65,53 +65,62 @@ void parse(const std::string& input, cellList& prog){
         switch(ins){
             case '<':
                 {
-                    --prog;
+                //    --prog;
+                    std::cout << "ins: <" << std::endl;
                     break;
                 }
             case '>':
                 {
-                    ++prog;
+                    //++prog;
+                    std::cout << "ins: >" << std::endl;
                     break;
                 }
 
             case '+':
                 {
                     //*(prog.current)++;
-                    ++(currentNode.valCell);
+                    //++(currentNode.valCell);
+                    std::cout << "ins: +" << std::endl;
                     break;
                 }
 
             case '-':
                 {
                     //*(prog.current)--;
-                    --(currentNode.valCell);
+                    //--(currentNode.valCell);
+                    std::cout << "ins: -" << std::endl;
                     break;
                 }
             case '.':
                 {
-                    std::cout << (char)currentNode.valCell.getVal();
+                    //std::cout << (char)currentNode.valCell.getVal();
+                    std::cout << "ins: ." << std::endl;
                     break;
                 }
             case ',':
                 {
                     /* TODO:  checking of input size */
+                    /*
                     int newVal;
                     std::cin >> newVal; 
-                    currentNode.valCell.setVal(newVal);
+                    currentNode.valCell.setVal(newVal);*/
+                    std::cout << "ins: ," << std::endl;
                     break;
                 }
             case '[':
                 {
-                    if (currentNode.valCell.getVal() == 0){
+                    /*if (currentNode.valCell.getVal() == 0){
                         prog += nextParPos(c, input);
-                    }
+                    }*/
+                    std::cout << "ins: [" << std::endl;
                     break;
                 }
             case ']':
                 {
-                    if(currentNode.valCell.getVal()){
+                    /*if(currentNode.valCell.getVal()){
                         prog -= prevParPos(c, input);
-                    }
+                    }*/
+                    std::cout << "ins: ]" << std::endl;
                     break;
                 }
         }
