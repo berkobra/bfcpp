@@ -1,1 +1,1 @@
-A simple non-optimizing Brainfuck compiler written in C++
+A simple non-optimizing Brainfuck interpreter written in C++
