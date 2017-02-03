@@ -2,4 +2,4 @@
 *.swp
 
 # The executable itself
-bf
+bf*

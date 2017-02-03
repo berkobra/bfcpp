@@ -1,6 +1,6 @@
 #include "cell.hpp"
 
-cell::cell(int initVal){
+cell::cell(BF_INT initVal){
     val = initVal;
 }
 
@@ -14,10 +14,10 @@ cell& cell::operator--(){
     return *this;
 }
 
-void cell::setVal(int newVal){
+void cell::setVal(BF_INT newVal){
     val = newVal;
 }
 
-const int cell::getVal(){
+const BF_INT cell::getVal(){
     return val;
 }
