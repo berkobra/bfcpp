@@ -65,7 +65,7 @@ void parse(const std::string& input, cellList& prog){
             ins = input.at(c);
         }
         catch (std::out_of_range const&){
-            std::cout << "Index out of range, terminating..." << std::endl;
+            //std::cout << "Index out of range, terminating..." << std::endl;
             break;
         }
 
