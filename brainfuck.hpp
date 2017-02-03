@@ -1,9 +1,18 @@
 #ifndef _BRAINFUCKH_
 #define _BRAINFUCKH_
 
+#ifdef _DEBUG_
+#undef _DEBUG_
+#endif 
+
 #include "cellList.hpp"
 #include <iostream>
 #include <string>
+
+/* need only at debug mode */
+#ifdef _DEBUG_
+#include "helper.hpp"
+#endif
 
 int nextParPos(int currentPos, const std::string& input){
     int c = 0;
@@ -43,7 +52,7 @@ int prevParPos(int currentPos, const std::string& input){
                 c++;
             }
         }
-        newPos--;
+        newPos++;
     }
 }
 
@@ -65,14 +74,20 @@ void parse(const std::string& input, cellList& prog){
         switch(ins){
             case '<':
                 {
-                //    --prog;
-                    std::cout << "ins: <" << std::endl;
+                    --prog;
+#ifdef _DEBUG_
+                    std::cout << "char: " << c
+                    << " ins: <" << std::endl;
+#endif
                     break;
                 }
             case '>':
                 {
-                    //++prog;
-                    std::cout << "ins: >" << std::endl;
+                    ++prog;
+#ifdef _DEBUG_
+                    std::cout << "char: " << c
+                    << " ins: >" << std::endl;
+#endif
                     break;
                 }
 
@@ -80,7 +95,11 @@ void parse(const std::string& input, cellList& prog){
                 {
                     //*(prog.current)++;
                     //++(currentNode.valCell);
-                    std::cout << "ins: +" << std::endl;
+                    ++prog.current->valCell;
+#ifdef _DEBUG_
+                    std::cout << "char: " << c
+                    << " ins: +" << std::endl;
+#endif
                     break;
                 }
 
@@ -88,42 +107,64 @@ void parse(const std::string& input, cellList& prog){
                 {
                     //*(prog.current)--;
                     //--(currentNode.valCell);
-                    std::cout << "ins: -" << std::endl;
+                    --prog.current->valCell;
+#ifdef _DEBUG_
+                    std::cout << "char: " << c
+                    << " ins: -" << std::endl;
+#endif
                     break;
                 }
             case '.':
                 {
-                    //std::cout << (char)currentNode.valCell.getVal();
-                    std::cout << "ins: ." << std::endl;
+                    std::cout << (char) currentNode.valCell.getVal();
+#ifdef _DEBUG_
+                    std::cout << "char: " << c
+                    << " ins: ." << std::endl;
+#endif
                     break;
                 }
             case ',':
                 {
                     /* TODO:  checking of input size */
-                    /*
+                    
                     int newVal;
                     std::cin >> newVal; 
-                    currentNode.valCell.setVal(newVal);*/
-                    std::cout << "ins: ," << std::endl;
+                    currentNode.valCell.setVal(newVal);
+#ifdef _DEBUG_
+                    std::cout << "char: " << c
+                    << " ins: ," << std::endl;
+#endif
                     break;
                 }
             case '[':
                 {
-                    /*if (currentNode.valCell.getVal() == 0){
-                        prog += nextParPos(c, input);
-                    }*/
-                    std::cout << "ins: [" << std::endl;
+                    if (currentNode.valCell.getVal() == 0){
+                        //prog += nextParPos(c, input);
+                        c += nextParPos(c, input);
+                    }
+#ifdef _DEBUG_
+                    std::cout << "char: " << c
+                    << " ins: [" << std::endl;
+#endif
                     break;
                 }
             case ']':
                 {
-                    /*if(currentNode.valCell.getVal()){
-                        prog -= prevParPos(c, input);
-                    }*/
-                    std::cout << "ins: ]" << std::endl;
+                    if(currentNode.valCell.getVal()){
+                        //prog -= prevParPos(c, input);
+                        c -= prevParPos(c, input);
+                    }
+#ifdef _DEBUG_
+                    std::cout << "char: " << c
+                    << " ins: ]" << std::endl;
+#endif
                     break;
                 }
         }
+#ifdef _DEBUG_
+        listPrint(prog);
+#endif
+        c++;
     }
 }
 #endif
