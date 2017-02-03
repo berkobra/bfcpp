@@ -4,20 +4,29 @@
 #include "cell.hpp"
 
 class cellList{
-    struct node{
-        node* prev;
-        node* next;
-        cell valCell;
-    }
-
     public:
-        node* current;
-}
+        struct node{
+            node* prev;
+            node* next;
+            cell valCell;
+            node(node* p = nullptr,
+                 node* n = nullptr,
+                 cell  c = cell())
+                {
+                    prev = p;
+                    next = n;
+                    valCell = c;
+                }
 
-cellList::cellList();
-cellList& cellList::operator++();
-cellList& cellList::operator--();
-cellList& cellList::operator+=(int c);
-cellList& cellList::operator-=(int c);
+        };
+
+        node* current;
+        cellList();
+        cellList& operator++();
+        cellList& operator--();
+        cellList& operator+=(int c);
+        cellList& operator-=(int c);
+};
+
 
 #endif

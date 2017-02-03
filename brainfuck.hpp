@@ -47,9 +47,10 @@ int prevParPos(int currentPos, const std::string& input){
     }
 }
 
-void parse(const std::string& input, cellList::cellList& prog){
+void parse(const std::string& input, cellList& prog){
     int c = 0;
     char ins;
+    cellList::node currentNode;
     while(true){
         try{
             ins = input.at(c);
@@ -58,33 +59,37 @@ void parse(const std::string& input, cellList::cellList& prog){
             std::cout << "Index out of range, terminating..." << std::endl;
             break;
         }
-        
+
+        currentNode = *(prog.current);
+
         switch(ins){
             case '<':
                 {
-                    prog--;
+                    --prog;
                     break;
                 }
             case '>':
                 {
-                    prog++;
+                    ++prog;
                     break;
                 }
 
             case '+':
                 {
-                    *(prog.current)++;
+                    //*(prog.current)++;
+                    ++(currentNode.valCell);
                     break;
                 }
 
             case '-':
                 {
-                    *(prog.current)--;
+                    //*(prog.current)--;
+                    --(currentNode.valCell);
                     break;
                 }
             case '.':
                 {
-                    std::cout << (char)(*(prog.current));
+                    std::cout << (char)currentNode.valCell.getVal();
                     break;
                 }
             case ',':
@@ -92,19 +97,19 @@ void parse(const std::string& input, cellList::cellList& prog){
                     /* TODO:  checking of input size */
                     int newVal;
                     std::cin >> newVal; 
-                    *(prog.current).setVal(newVal);
+                    currentNode.valCell.setVal(newVal);
                     break;
                 }
             case '[':
                 {
-                    if (*(prog.current) == 0){
+                    if (currentNode.valCell.getVal() == 0){
                         prog += nextParPos(c, input);
                     }
                     break;
                 }
             case ']':
                 {
-                    if(*(prog.current)){
+                    if(currentNode.valCell.getVal()){
                         prog -= prevParPos(c, input);
                     }
                     break;

@@ -18,6 +18,6 @@ void cell::setVal(int newVal){
     val = newVal;
 }
 
-void cell::getVal(){
+const int cell::getVal(){
     return val;
 }

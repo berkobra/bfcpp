@@ -4,6 +4,8 @@
 #include <fstream>
 #include <string>
 #include "brainfuck.hpp"
+#include "cellList.hpp"
+#include "cell.hpp"
 
 int main(int argc, char **argv){
     /* read the input file to a string */

@@ -3,13 +3,17 @@
 
 
 class cell{
-    int val;
+
+    private:
+        int val;
+    public:
+        cell(int val = 0);
+        cell& operator++();
+        cell& operator--();
+        void setVal(int newVal);
+        const int getVal();
+
 };
 
-cell::cell(int val = 0);
-cell& cell::operator++();
-cell& cell::operator--();
-void cell::setVal(int newVal);
-int cell::getVal();
 
 #endif
